@@ -43,7 +43,7 @@
             width: 4px; height: 4px; background-color: #888; border-radius: 50%;
         }
 
-        /* [3] 모든 공통 정보 카드 스타일 (교과과정, 교수진, 실습장) */
+        /* [3] 모든 공통 정보 카드 스타일 (교과과정, 교수진, 실습장, 자격증, 공지사항) */
         .info-card {
             display: none; /* 기본적으로 모두 숨김 */
             background: #fff; border: 1px solid #ddd; border-radius: 8px;
@@ -111,13 +111,23 @@
             color: #666;
         }
 
-        /* 실습장 소개 이미지 최적화 */
-        .practice-room-img {
+        /* 실습장 및 자격증 이미지 최적화 */
+        .practice-room-img, .cert-img {
             width: 100%;
+            max-width: 800px;
             height: auto;
             display: block;
             margin: 0 auto;
         }
+
+        /* [7] 공지사항 게시판 스타일 */
+        .notice-table-container { margin-top: 20px; }
+        .notice-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .notice-table th { background-color: #f1f5f9; border-top: 2px solid #005bac; border-bottom: 1px solid #ccc; padding: 12px 10px; color: #333; font-weight: bold; }
+        .notice-table td { padding: 15px 10px; border-bottom: 1px solid #eee; color: #555; }
+        .notice-table .td-title { text-align: left; font-weight: 500; cursor: pointer; transition: 0.2s; }
+        .notice-table .td-title:hover { color: #005bac; text-decoration: underline; }
+        .notice-tag { display: inline-block; background: #e63946; color: #fff; font-size: 12px; padding: 3px 8px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -152,9 +162,8 @@
                 </li>
                 <li><a onclick="showSection('curriculum-section')" class="nav-link">교과 과정</a></li>
                 <li><a onclick="showSection('practice-room-section')" class="nav-link">실습장 소개</a></li>
-                <li><a href="#" class="nav-link">관련 자격증</a></li>
-                <li><a href="#" class="nav-link">공지사항</a></li>
-                <li><a href="#" class="nav-link">문의</a></li>
+                <li><a onclick="showSection('certificate-section')" class="nav-link">관련 자격증</a></li>
+                <li><a onclick="showSection('notice-section')" class="nav-link">공지사항</a></li>
             </ul>
         </div>
     </nav>
@@ -186,6 +195,62 @@
             <img src="https://www.kopo.ac.kr/ckimage/2022/71/8B0POiic2J6wU1VCbrdP.jpg" alt="실습장 소개 이미지" class="practice-room-img">
         </div>
 
+        <div id="certificate-section" class="info-card">
+            <h2 style="color:#005bac; margin-bottom:20px; text-align:center;">관련 자격증 안내</h2>
+            <div style="text-align:center;">
+                <h3 style="color:#333; margin-bottom:15px;">전기산업기사</h3>
+                <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTExMDNfMTkw%2FMDAxNzYyMTYyMTEzNzAx.hOkmW5VBtq_H261v-LYhUrnmBb4ir14w1fPBeQGIr0kg.7YKTO0wIo6YHT1iUsy1Y4Uu1MNcwf9UWqwWPNedI_JEg.PNG%2F%25C0%25CC%25B9%25CC%25C1%25F6_08.png&type=sc960_832" alt="전기산업기사" class="cert-img">
+            </div>
+        </div>
+
+        <div id="notice-section" class="info-card">
+            <h2 style="color:#005bac; margin-bottom:20px;">공지사항</h2>
+            <p style="color:#666; font-size:14px; margin-bottom: 20px;">학과 주요 공지사항을 확인하실 수 있습니다.</p>
+            <div class="notice-table-container">
+                <table class="notice-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">번호</th>
+                            <th style="width: 55%;">제목</th>
+                            <th style="width: 15%;">작성자</th>
+                            <th style="width: 20%;">등록일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5</td>
+                            <td class="td-title">2026학년도 1학기 중간고사 시간표 안내</td>
+                            <td>학과조교</td>
+                            <td>2026.04.15</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="td-title">캡스톤 디자인 프로젝트 조 편성 결과 발표</td>
+                            <td>학과조교</td>
+                            <td>2026.04.01</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="td-title">2026학년도 1학기 국가장학금 2차 신청 안내</td>
+                            <td>행정실</td>
+                            <td>2026.03.10</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="td-title">전기산업기사 자격증 대비 특강 참여자 모집</td>
+                            <td>학과조교</td>
+                            <td>2026.03.05</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td class="td-title"><span class="notice-tag">필독</span> 2026학년도 1학기 수강신청 안내</td>
+                            <td>학과조교</td>
+                            <td>2026.02.15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div id="prof-detail-kim_jh" class="info-card">
             <div class="prof-header">
                 <img src="https://www.kopo.ac.kr/emp/image/USRCNFRM_00000033862.do" alt="김진형 교수님" class="prof-img">
@@ -311,9 +376,9 @@
             4: ["디지털논리회로실습", "수변전실무실습", "소방설비실습", "승강기설비실습"]
         };
 
-        // 섹션 전환 함수 (배너, 교수 정보, 교과과정, 실습장)
+        // 섹션 전환 함수 (배너, 교수 정보, 교과과정, 실습장, 자격증, 공지사항)
         function showSection(id) {
-            // 1. 모든 정보 카드(교수님, 교과과정, 실습장) 숨기기
+            // 1. 모든 정보 카드 숨기기
             const cards = document.getElementsByClassName('info-card');
             for(let i=0; i<cards.length; i++) { 
                 cards[i].style.display = 'none'; 
